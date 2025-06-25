@@ -1,64 +1,92 @@
-# 📂 File Organizer by Type
+# Multi-Version File Organizer
 
-## Project Overview
+## Overview
 
-**File Organizer by Type** is a Python script that automates the process of organizing files in your current working directory based on their file types. The script scans all files in the directory, detects their extensions, and moves each file into a dedicated folder named after its type (e.g., "py files", "mp3 files"). If a folder for a specific extension does not exist, the script creates it automatically. This helps maintain an orderly workspace and saves time spent on manual file sorting.
+The Multi-Version File Organizer is a utility designed for IT departments and general users to streamline directory management by categorizing files based on their extensions. The project provides three distinct script versions to accommodate different operating systems: a Bash script for Unix-based systems, a Batch script for Windows, and a Python script for cross-platform compatibility.
 
----
-
-## How It Works
-
-1. **Directory Scanning**: The script scans the current working directory for all files.
-2. **Extension Detection**: For each file, it determines the file extension (e.g., `.txt`, `.jpg`, `.py`).
-3. **Folder Creation**: If a folder named `<extension> files` does not already exist, the script creates it.
-4. **File Organization**: Each file is moved into its corresponding `<extension> files` folder.
-5. **Repeat**: The process continues until all files are sorted by type.
+Each script scans its current working directory and moves files into subfolders named after their respective file extensions. Files with no extension are moved to a dedicated folder.
 
 ---
 
-## Requirements
+## Available Versions
 
-- **Python Version**: 3.7 or higher
-- **Operating Systems**: Windows, Linux, or macOS
-
-No additional Python packages are required.
+| Script                | Platform                  | Requirements             |
+|-----------------------|--------------------------|--------------------------|
+| `file-organizer.sh`   | Linux, macOS             | Bash (preinstalled)      |
+| `file-organizer.bat`  | Windows 7/8/10/11        | CMD (preinstalled)       |
+| `file-organizer.py`   | Windows, Linux, macOS    | Python 3.6+ (standard library only) |
 
 ---
 
-## How to Use
+## Functionality
 
-1. **Download the Script**: Save the Python script (`file_organizer_by_type.py`) to the directory you wish to organize.
-2. **Open Terminal or Command Prompt**: Navigate to the directory containing the script.
-3. **Run the Script**:
-   ```sh
-   python file_organizer_by_type.py
+- Automatically organizes files in the script's residing directory.
+- Each file is moved to a folder named `<extension> Files` (e.g., `pdf Files`).
+- Files without extensions are moved to a folder named `NoExtension Files`.
+- No files are deleted or overwritten.
+- Existing files in destination folders are not replaced; such files are skipped.
+- No logging or undo capability is provided; operations are immediate and irreversible.
+
+> **Note:** Scripts operate strictly within the directory they are placed in. They do not accept directory paths or external arguments.
+
+---
+
+## Usage Instructions
+
+### 1. `file-organizer.sh` (Linux / macOS)
+
+- **Compatibility:** Linux (all major distributions), macOS (all versions)
+- **Requirements:** Bash shell (preinstalled)
+- **Permissions:** Must be executable
+
+**Steps:**
+```bash
+chmod +x file-organizer.sh
+./file-organizer.sh
+```
+
+---
+
+### 2. `file-organizer.bat` (Windows)
+
+- **Compatibility:** Windows 7, 8, 10, 11 (32-bit & 64-bit)
+- **Requirements:** Windows Command Prompt (cmd.exe)
+- **Dependencies:** None
+
+**Steps:**
+1. Place `file-organizer.bat` in the directory to be organized.
+2. Double-click the file or execute it via Command Prompt:
    ```
-4. The script will automatically organize all files in the current directory into folders by file type.
-
-> **Note for Windows Users**:  
-> A Batch file (`.bat`) version will be available soon for one-click execution without using the command line.
+   file-organizer.bat
+   ```
 
 ---
 
-## Upcoming Versions
+### 3. `file-organizer.py` (Cross-platform)
 
-- **Batch File Support**:  
-  A `.bat` file for Windows will be released soon to allow users to organize files with a simple double-click, making the process even more accessible.
+- **Compatibility:** Windows, Linux, macOS
+- **Requirements:** Python 3.6 or higher
+- **Dependencies:** None (uses only standard library)
 
----
-
-## License
-
-This project is free and open source. You are welcome to use, modify, and distribute it as you wish.
-
----
-
-## Contributions
-
-Contributions are highly encouraged! If you have ideas to improve the script or want to add new features, feel free to fork this repository and submit a pull request.
+**Steps:**
+1. Place `file-organizer.py` in the target directory.
+2. Run the script using Python:
+   ```bash
+   python file-organizer.py
+   ```
 
 ---
 
-## Author
+## Important Notes
 
-*Youssef Shaaban*
+- The script **must** be located in the folder to be organized.
+- No files are deleted or overwritten; files are moved.
+- If a file with the same name already exists in the destination folder, that file is skipped.
+- The tool does **not** provide logs, previews, or undo functionality.
+- The operation is immediate and cannot be reverted.
+
+---
+
+## Support
+
+For issues, enhancements, or questions, please open an issue or contact the repository maintainers.
